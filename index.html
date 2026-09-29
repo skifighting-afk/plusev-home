@@ -1318,6 +1318,92 @@ main{position:relative;z-index:15;background:var(--ink)}
     </div>
   </section>
 
+  <!-- ROI 계산기 -->
+  <section class="sec roi" id="roi" aria-labelledby="roiT">
+    <div class="wrap">
+      <div class="eyebrow">깐깐하게 계산해 보세요</div>
+      <h2 class="H" id="roiT">쓰는 돈이 아닙니다.<br><em>아끼는 돈입니다.</em></h2>
+      <p class="lede mut">부풀린 숫자는 안 넣었습니다. 출퇴근 반올림, 발주 단가, 구인 광고비, 대타로 살린 테이블. 딱 돈으로 셀 수 있는 것만 넣고, +EV 이용료는 빼서 계산합니다. 우리 매장 숫자로 바꿔 보세요.</p>
+      <div class="roiG">
+        <form class="roiIn" id="roiF" onsubmit="return false">
+          <div class="roiHd"><b>우리 매장 숫자로 바꿔 보세요</b><button type="button" class="roiRs" id="roiRs">기본값</button></div>
+          <div class="roiGrid">
+            <label><span>직원·딜러 수</span><i><input name="n" inputmode="numeric" value="6"><u>명</u></i></label>
+            <label><span>1인 한 달 근무일</span><i><input name="d" inputmode="numeric" value="20"><u>일</u></i></label>
+            <label><span>출퇴근 반올림</span><i><input name="r" inputmode="numeric" value="5"><u>분/일</u></i><small>10분·30분 단위로 끊어 주던 만큼 · 이미 1분 단위면 0</small></label>
+            <label><span>평균 시급</span><i><input name="w" inputmode="numeric" value="10320"><u>원</u></i><small>2026년 최저시급</small></label>
+            <label><span>한 달 발주액</span><i><input name="o" inputmode="numeric" value="1500000"><u>원</u></i><small>음료·소모품·카드덱 · 주류 제외</small></label>
+            <label><span>발주 절감률</span><i><input name="p" inputmode="decimal" value="5"><u>%</u></i><small>보수적으로 잡은 값</small></label>
+            <label><span>구인 사이트 광고비</span><i><input name="a" inputmode="numeric" value="50000"><u>원/월</u></i><small>+EV 딜러 모집 공고는 무료 · 안 쓰시면 0</small></label>
+            <label><span>딜러 펑크를 대타로 채운 시간</span><i><input name="h" inputmode="numeric" value="2"><u>시간/월</u></i><small>대타 못 구해 테이블 닫던 시간</small></label>
+            <label><span>테이블 시간당 순이익</span><i><input name="t" inputmode="numeric" value="50000"><u>원</u></i><small>레이크 − 딜러 시급</small></label>
+            <label><span>+EV 월 이용료</span><i><input name="f" inputmode="numeric" value="35000"><u>원</u></i><small>프로 기준 · 첫 달 무료는 빼고 계산</small></label>
+          </div>
+        </form>
+        <div class="roiOut" aria-live="polite">
+          <small class="roiK">한 달, 쓰는 돈을 빼고 남는 돈</small>
+          <div class="roiBig"><b id="roiT0">+0</b><span>원</span></div>
+          <p class="roiX" id="roiX"></p>
+          <div class="roiRows" id="roiRows"></div>
+          <div class="roiSum"><span>1년이면</span><b id="roiY">0원</b></div>
+          <p class="roiNote">돈으로 셈하지 않은 것: 급여 계산·출근 확인에 쓰던 사장님 시간, 빅데이터 처방으로 늘어나는 매출, 종이 계약서·명세서. 기본값은 직원 6명 규모 매장 예시이며, 결과는 추정치로 보장하지 않습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<style>
+.roi{background:radial-gradient(ellipse at 80% 20%,rgba(70,184,127,.10),transparent 55%),var(--ink)}
+.roi .H em{font-style:normal;color:var(--g)}
+.roiG{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:20px;margin-top:44px;align-items:start}
+.roiIn,.roiOut{border:1px solid var(--line);border-radius:22px;padding:24px}
+.roiIn{background:var(--ink2)}
+.roiHd{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.roiHd b{font-size:16px}
+.roiRs{background:none;border:1px solid var(--line2);color:var(--text);border-radius:999px;padding:7px 14px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.roiGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+.roiGrid label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--text)}
+.roiGrid i{font-style:normal;display:flex;align-items:center;background:var(--ink);border:1px solid var(--line2);border-radius:12px;padding:0 12px;transition:border-color .2s}
+.roiGrid i:focus-within{border-color:var(--g)}
+.roiGrid input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--text);font-family:var(--mono);font-size:16px;padding:12px 0}
+.roiGrid u{text-decoration:none;color:var(--mut);font-size:12px;font-weight:500;white-space:nowrap;margin-left:6px}
+.roiGrid small{font-size:12px;font-weight:500;color:var(--mut);line-height:1.4}
+.roiOut{position:sticky;top:90px;background:linear-gradient(180deg,rgba(70,184,127,.12),transparent 40%),var(--ink2);border-color:rgba(70,184,127,.45)}
+.roiK{font-size:13px;color:var(--mut)}
+.roiBig{display:flex;align-items:baseline;gap:6px;margin:8px 0 6px}.roiBig b{font-family:var(--lat);font-weight:900;font-size:clamp(44px,6vw,80px);letter-spacing:-.04em;color:var(--g);line-height:1}.roiBig span{font-size:20px;font-weight:800;color:var(--g)}
+.roiBig.neg b,.roiBig.neg span{color:var(--red)}
+.roiX{margin:0 0 16px;font-size:14px;font-weight:700}.roiX em{font-style:normal;color:var(--g)}
+.roiRows>div{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.roiRows b{font-size:14px}.roiRows span{font-family:var(--mono);font-size:14px;font-weight:700;text-align:right}.roiRows small{grid-column:1/-1;font-family:var(--mono);font-size:12px;color:var(--mut)}
+.roiRows .m span{color:var(--red)}
+.roiSum{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0 10px;border-top:1px solid var(--line2);margin-top:6px}.roiSum span{font-weight:800}.roiSum b{font-family:var(--mono);font-size:20px;color:var(--g)}
+.roiNote{margin:8px 0 0;font-size:12px;line-height:1.6;color:var(--mut)}
+@media (max-width:900px){.roiG{grid-template-columns:1fr}.roiOut{position:static}}
+@media (max-width:420px){.roiGrid{grid-template-columns:1fr}.roiIn,.roiOut{padding:18px}}
+</style>
+<script>
+(function(){
+  var F=document.getElementById('roiF');if(!F)return;
+  var D={};[].forEach.call(F.elements,function(e){if(e.name)D[e.name]=e.value});
+  var W=function(n){return Math.round(n).toLocaleString('ko-KR')},N=function(k){var v=parseFloat(String(F.elements[k].value).replace(/[^\d.]/g,''));return isFinite(v)&&v>0?v:0};
+  function calc(){
+    var n=N('n'),d=N('d'),r=N('r'),w=N('w'),o=N('o'),p=N('p'),a=N('a'),h=N('h'),t=N('t'),f=N('f');
+    var R=[['반올림으로 더 나가던 급여',n*d*r/60*w,W(n)+'명 × '+W(d)+'일 × '+W(r)+'분 × 시급 '+W(w)+'원 ÷ 60'],
+      ['발주 단가 차이',o*p/100,W(o)+'원 × '+p+'%'],
+      ['구인 사이트 광고비',a,'월 '+W(a)+'원 → 0원'],
+      ['대타로 살린 테이블',h*t,W(h)+'시간 × '+W(t)+'원'],
+      ['+EV 이용료',-f,'월 '+W(f)+'원']];
+    var gain=R.slice(0,4).reduce(function(s,x){return s+x[1]},0),tot=gain-f;
+    document.getElementById('roiRows').innerHTML=R.map(function(x){return '<div class="'+(x[1]<0?'m':'')+'"><b>'+x[0]+'</b><span>'+(x[1]<0?'−':'+')+W(Math.abs(x[1]))+'</span><small>'+x[2]+'</small></div>'}).join('');
+    var big=document.querySelector('.roiBig');big.classList.toggle('neg',tot<0);
+    document.getElementById('roiT0').textContent=(tot<0?'−':'+')+W(Math.abs(tot));
+    document.getElementById('roiY').textContent=(tot<0?'−':'')+W(Math.abs(tot*12))+'원';
+    document.getElementById('roiX').innerHTML=f>0?'이용료 '+W(f)+'원을 내고, <em>'+(gain/f).toFixed(1)+'배</em>를 아낍니다.':'이용료 없이 계산했어요.';
+  }
+  F.addEventListener('input',calc);
+  document.getElementById('roiRs').onclick=function(){for(var k in D)F.elements[k].value=D[k];calc()};
+  calc();
+})();
+</script>
+
   <section class="sec" id="pricing" aria-labelledby="prT">
     <div class="wrap">
       <div class="eyebrow">오픈 프로모션 · 요금제</div>
