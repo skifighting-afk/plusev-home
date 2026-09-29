@@ -1323,7 +1323,7 @@ main{position:relative;z-index:15;background:var(--ink)}
     <div class="wrap">
       <div class="eyebrow">깐깐하게 계산해 보세요</div>
       <h2 class="H" id="roiT">쓰는 돈이 아닙니다.<br><em>아끼는 돈입니다.</em></h2>
-      <p class="lede mut">부풀린 숫자는 안 넣었습니다. 출퇴근 반올림, 발주 단가, 구인 광고비, 대타로 살린 테이블. 딱 돈으로 셀 수 있는 것만 넣고, 결과는 +EV 이용료를 뺀 금액입니다. 우리 매장 숫자로 바꿔 보세요.</p>
+      <p class="lede mut">부풀린 숫자는 안 넣었습니다. 출퇴근 반올림, 발주 단가, 구인 광고비, 대타로 살린 테이블. 딱 돈으로 셀 수 있는 것만 넣고, +EV 이용료까지 빼서 계산합니다. 우리 매장 숫자로 바꿔 보세요.</p>
       <div class="roiG">
         <form class="roiIn" id="roiF" onsubmit="return false">
           <div class="roiHd"><b>우리 매장 숫자로 바꿔 보세요</b><button type="button" class="roiRs" id="roiRs">기본값</button></div>
@@ -1340,11 +1340,11 @@ main{position:relative;z-index:15;background:var(--ink)}
           </div>
         </form>
         <div class="roiOut" aria-live="polite">
-          <small class="roiK">한 달, 이용료 차감 후 남는 돈</small>
+          <span class="roiPromo">오픈 프로모션 · 첫 달 이용료 0원</span><small class="roiK">첫 달, 남는 돈</small>
           <div class="roiBig"><b id="roiT0">+0</b><span>원</span></div>
           <p class="roiX" id="roiX"></p>
           <div class="roiRows" id="roiRows"></div>
-          <div class="roiSum"><span>1년이면 <small style="font-weight:500;color:var(--mut)">이용료 차감 후</small></span><b id="roiY">0원</b></div>
+          <div class="roiSum"><span>1년이면 <small style="font-weight:500;color:var(--mut)">첫 달 무료 · 11개월 이용료 차감</small></span><b id="roiY">0원</b></div>
           <p class="roiNote">돈으로 셈하지 않은 것: 급여 계산·출근 확인에 쓰던 사장님 시간, 빅데이터 처방으로 늘어나는 매출, 종이 계약서·명세서. 기본값은 직원 6명 규모 매장 예시이며, 결과는 추정치로 보장하지 않습니다.</p>
         </div>
       </div>
@@ -1354,12 +1354,12 @@ main{position:relative;z-index:15;background:var(--ink)}
 .roi{background:radial-gradient(ellipse at 80% 20%,rgba(70,184,127,.10),transparent 55%),var(--ink)}
 .roi .H em{font-style:normal;color:var(--g)}
 .roiG{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:20px;margin-top:44px;align-items:start}
-.roiIn,.roiOut{border:1px solid var(--line);border-radius:22px;padding:24px}
+.roiIn,.roiOut{min-width:0;border:1px solid var(--line);border-radius:22px;padding:24px}
 .roiIn{background:var(--ink2)}
 .roiHd{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.roiHd b{font-size:16px}
 .roiRs{background:none;border:1px solid var(--line2);color:var(--text);border-radius:999px;padding:7px 14px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
-.roiGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
-.roiGrid label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--text)}
+.roiGrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 16px}
+.roiGrid label{min-width:0;display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--text)}
 .roiGrid i{font-style:normal;display:flex;align-items:center;background:var(--ink);border:1px solid var(--line2);border-radius:12px;padding:0 12px;transition:border-color .2s}
 .roiGrid i:focus-within{border-color:var(--g)}
 .roiGrid input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--text);font-family:var(--mono);font-size:16px;padding:12px 0}
@@ -1373,6 +1373,11 @@ main{position:relative;z-index:15;background:var(--ink)}
 .roiRows>div{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-bottom:1px dashed var(--line)}
 .roiRows b{font-size:14px}.roiRows span{font-family:var(--mono);font-size:14px;font-weight:700;text-align:right}.roiRows small{grid-column:1/-1;font-family:var(--mono);font-size:12px;color:var(--mut)}
 .roiRows .m span{color:var(--red)}
+.roiRows .fee{position:relative;border:1px solid rgba(70,184,127,.5);border-radius:12px;padding:12px 14px;margin-top:10px;background:rgba(70,184,127,.08)}
+.roiRows .fee span{color:var(--g)}.roiRows .fee s{color:var(--mut);font-weight:500;margin-right:6px}
+.roiRows .fee em{position:absolute;top:-11px;right:12px;font-style:normal;font-size:12px;font-weight:900;color:#06140c;background:var(--g);border-radius:999px;padding:3px 10px;transform:rotate(-3deg)}
+.roiPromo{display:inline-block;margin-bottom:10px;font-size:12px;font-weight:800;color:#06140c;background:var(--g);border-radius:999px;padding:5px 12px}
+.roiK{display:block}
 .roiSum{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0 10px;border-top:1px solid var(--line2);margin-top:6px}.roiSum span{font-weight:800}.roiSum b{font-family:var(--mono);font-size:20px;color:var(--g)}
 .roiNote{margin:8px 0 0;font-size:12px;line-height:1.6;color:var(--mut)}
 @media (max-width:900px){.roiG{grid-template-columns:1fr}.roiOut{position:static}}
@@ -1384,18 +1389,18 @@ main{position:relative;z-index:15;background:var(--ink)}
   var D={};[].forEach.call(F.elements,function(e){if(e.name)D[e.name]=e.value});
   var W=function(n){return Math.round(n).toLocaleString('ko-KR')},N=function(k){var v=parseFloat(String(F.elements[k].value).replace(/[^\d.]/g,''));return isFinite(v)&&v>0?v:0};
   function calc(){
-    var n=N('n'),d=N('d'),r=N('r'),w=N('w'),o=N('o'),p=N('p'),a=N('a'),h=N('h'),t=N('t'),f=35000; // 프로 요금 기준, 화면엔 금액 비표시
+    var n=N('n'),d=N('d'),r=N('r'),w=N('w'),o=N('o'),p=N('p'),a=N('a'),h=N('h'),t=N('t'),f=25000; // 베이직 월 이용료 · 첫 달은 프로모션으로 0원
     var R=[['반올림으로 더 나가던 급여',n*d*r/60*w,W(n)+'명 × '+W(d)+'일 × '+W(r)+'분 × 시급 '+W(w)+'원 ÷ 60'],
       ['발주 단가 차이',o*p/100,W(o)+'원 × '+p+'%'],
       ['구인 사이트 광고비',a,'월 '+W(a)+'원 → 0원'],
       ['대타로 살린 테이블',h*t,W(h)+'시간 × '+W(t)+'원']];
-    R.push(['+EV 이용료','fee','프로 요금제 기준 · 첫 달 무료는 계산에 안 넣음']);
-    var gain=R.slice(0,4).reduce(function(s,x){return s+x[1]},0),tot=gain-f;
-    document.getElementById('roiRows').innerHTML=R.map(function(x){return x[1]==='fee'?'<div class="m"><b>'+x[0]+'</b><span>차감</span><small>'+x[2]+'</small></div>':'<div><b>'+x[0]+'</b><span>+'+W(x[1])+'</span><small>'+x[2]+'</small></div>'}).join('');
+    R.push(['+EV 이용료 (베이직)','fee','월 '+W(f)+'원 · 오픈 프로모션으로 첫 달 무료']);
+    var gain=R.slice(0,4).reduce(function(s,x){return s+x[1]},0),tot=gain,after=gain-f;
+    document.getElementById('roiRows').innerHTML=R.map(function(x){return x[1]==='fee'?'<div class="fee"><b>'+x[0]+'</b><span><s>−'+W(f)+'</s> 0원</span><small>'+x[2]+'</small><em>한 달 무료!</em></div>':'<div><b>'+x[0]+'</b><span>+'+W(x[1])+'</span><small>'+x[2]+'</small></div>'}).join('');
     var big=document.querySelector('.roiBig');big.classList.toggle('neg',tot<0);
     document.getElementById('roiT0').textContent=(tot<0?'−':'+')+W(Math.abs(tot));
-    document.getElementById('roiY').textContent=(tot<0?'−':'')+W(Math.abs(tot*12))+'원';
-    document.getElementById('roiX').innerHTML=tot>0?'<em>이용료 차감 후</em>에도 이만큼 남습니다.':'지금 숫자로는 이용료보다 아끼는 돈이 적어요.';
+    var yr=gain*12-f*11;document.getElementById('roiY').textContent=(yr<0?'−':'')+W(Math.abs(yr))+'원';
+    document.getElementById('roiX').innerHTML=after>=0?'둘째 달부터는 이용료 '+W(f)+'원을 빼고도 <em>매달 +'+W(after)+'원</em>':'지금 숫자로는 둘째 달부터 이용료보다 아끼는 돈이 적어요 (매달 −'+W(-after)+'원)';
   }
   F.addEventListener('input',calc);
   document.getElementById('roiRs').onclick=function(){for(var k in D)F.elements[k].value=D[k];calc()};
