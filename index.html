@@ -1317,40 +1317,42 @@ main{position:relative;z-index:15;background:var(--ink)}
     </div>
   </section>
 
-  <!-- 가입 촉진: 딜러 공석 손해 -->
+  <!-- 가입 촉진: 딜러 공석 손해 + GPS 매칭 -->
   <section class="sec rush" id="rush" aria-labelledby="rushT">
     <div class="wrap">
-      <div class="rushLive"><i></i>지금 딜러 가입 폭주 중</div>
-      <h2 class="H" id="rushT">딜러 한 명 없어서<br>테이블 하나 닫으면, <em>얼마?</em></h2>
+      <div class="rushLive"><i></i>딜러 300명 가입 완료</div>
+      <h2 class="H" id="rushT">딜러가 비는 밤,<br>테이블 하나가 <em>30만 원</em>을 잃습니다.</h2>
+      <p class="lede mut rushLede">공석은 예고 없이 생깁니다. +EV는 그 순간, 매장 가까이 있는 딜러를 찾아 바로 연결합니다.</p>
       <div class="rushG">
         <div class="rushLoss">
-          <small>오늘 밤, 테이블 1개가 쉬면</small>
+          <small>딜러 1명 공석 · 테이블 1개 · 하룻밤</small>
           <div class="rushBig"><b id="rushN">0</b><span>원</span></div>
-          <p class="rushF">테이블 1개 × 6시간 × 시간당 순이익 50,000원</p>
-          <div class="rushMo"><span>한 달에 4번만 펑크 나도</span><b>−1,200,000원</b></div>
+          <p class="rushF">6시간 × 시간당 순이익 50,000원</p>
+          <div class="rushMo"><span>한 달에 네 번이면</span><b>−1,200,000원</b></div>
         </div>
-        <div class="rushVs">
-          <div class="rushDay ok">
-            <em>오늘 가입</em>
-            <b>한 달 무료 시작</b>
-            <p>오늘 밤 펑크 나도 근처 딜러에게 바로 알림 → 테이블 그대로 돌아갑니다.</p>
+        <div class="rushGps">
+          <div class="radar" aria-hidden="true">
+            <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span><span class="sweep"></span>
+            <span class="me">+EV</span>
+            <i class="d" style="--x:22%;--y:30%;--t:.2s"></i><i class="d" style="--x:72%;--y:24%;--t:.9s"></i><i class="d" style="--x:80%;--y:66%;--t:1.5s"></i><i class="d" style="--x:30%;--y:74%;--t:2.1s"></i><i class="d" style="--x:58%;--y:84%;--t:2.7s"></i>
           </div>
-          <div class="rushDay no">
-            <em>“내일 해야지”</em>
-            <b>오늘 밤 못 뽑으면 −300,000원</b>
-            <p>한 달 무료는 그대로인데, 하루 미룬 손해는 그대로 사장님 몫이에요. ㅠㅠ</p>
+          <div class="gpsTx">
+            <em>GPS 기반 주변 딜러 매칭</em>
+            <b>가장 가까운 딜러에게<br>먼저 닿습니다.</b>
+            <ol><li>공석 등록</li><li>근처 딜러에게 동시 알림</li><li>지원 확인 후 바로 확정</li></ol>
           </div>
         </div>
       </div>
       <div class="rushCta">
-        <a class="btn go" href="https://skifighting-afk.github.io/plus-ev/" data-evt="signup_start" data-src="rush">지금 한 달 무료로 시작하기</a>
+        <p>첫 달은 무료입니다. 다만 시작이 하루 늦으면, 그 하루의 공석은 막을 수 없습니다.</p>
+        <a class="btn go" href="https://skifighting-afk.github.io/plus-ev/" data-evt="signup_start" data-src="rush">한 달 무료로 시작하기</a>
         <small>첫 달 이용료 0원 · 딜러 구인 공고는 언제나 무료</small>
       </div>
     </div>
   </section>
 <style>
 .rush{background:radial-gradient(ellipse at 15% 10%,rgba(229,72,77,.10),transparent 50%),radial-gradient(ellipse at 90% 90%,rgba(70,184,127,.10),transparent 55%),var(--ink)}
-.rush .H em{font-style:normal;color:var(--red)}
+.rush .H em{font-style:normal;color:var(--red);white-space:nowrap}
 .rushLive{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;border:1px solid rgba(70,184,127,.5);background:rgba(70,184,127,.12);color:var(--g);font-weight:800;font-size:14px;margin-bottom:22px}
 .rushLive i{width:9px;height:9px;border-radius:50%;background:var(--g);box-shadow:0 0 0 0 rgba(70,184,127,.7);animation:rushP 1.6s infinite}
 @keyframes rushP{70%{box-shadow:0 0 0 12px rgba(70,184,127,0)}100%{box-shadow:0 0 0 0 rgba(70,184,127,0)}}
@@ -1363,16 +1365,27 @@ main{position:relative;z-index:15;background:var(--ink)}
 .rushF{margin:0 0 20px;font-family:var(--mono);font-size:13px;color:var(--mut)}
 .rushMo{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:16px;border-top:1px dashed rgba(255,255,255,.12);font-weight:700}
 .rushMo b{font-family:var(--mono);color:var(--red);font-size:18px}
-.rushVs{display:grid;gap:14px}
-.rushDay{border-radius:18px;padding:22px 24px;border:1px solid var(--line,rgba(255,255,255,.1));background:var(--ink2)}
-.rushDay em{font-style:normal;font-size:13px;font-weight:800;letter-spacing:.04em}
-.rushDay b{display:block;font-size:22px;margin:6px 0}
-.rushDay p{margin:0;color:var(--mut);font-size:14px;line-height:1.6}
-.rushDay.ok{border-color:rgba(70,184,127,.5)}.rushDay.ok em,.rushDay.ok b{color:var(--g)}
-.rushDay.no{opacity:.92}.rushDay.no em{color:var(--mut)}.rushDay.no b{color:var(--red)}
 .rushCta{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:36px;text-align:center}
 .rushCta .btn{font-size:17px;padding:16px 30px}
 .rushCta small{color:var(--mut);font-size:13px}
+.rushLede{max-width:620px;margin:14px 0 0}
+.rushGps{display:grid;grid-template-columns:170px 1fr;gap:24px;align-items:center;border:1px solid rgba(70,184,127,.45);border-radius:22px;padding:26px;background:linear-gradient(180deg,rgba(70,184,127,.12),transparent 55%),var(--ink2)}
+.radar{position:relative;width:170px;height:170px;flex:none;border-radius:50%;overflow:hidden;background:radial-gradient(circle,rgba(70,184,127,.10),transparent 70%)}
+.radar .ring{position:absolute;inset:0;margin:auto;border:1px solid rgba(70,184,127,.28);border-radius:50%}
+.radar .r1{width:34%;height:34%}.radar .r2{width:67%;height:67%}.radar .r3{width:99%;height:99%}
+.radar .sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(70,184,127,.45),transparent 25%);animation:rSweep 3s linear infinite}
+.radar .me{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:900 12px var(--lat);color:#06140c;background:var(--g);border-radius:999px;padding:4px 8px;z-index:2}
+.radar .d{position:absolute;left:var(--x);top:var(--y);width:9px;height:9px;margin:-4px;border-radius:50%;background:#fff;opacity:.25;animation:rDot 3s var(--t) infinite}
+@keyframes rSweep{to{transform:rotate(360deg)}}
+@keyframes rDot{0%,100%{opacity:.25;box-shadow:none}12%{opacity:1;box-shadow:0 0 0 6px rgba(70,184,127,.35)}}
+.gpsTx em{font-style:normal;font-size:13px;font-weight:800;color:var(--g)}
+.gpsTx b{display:block;font-size:22px;line-height:1.35;margin:8px 0 14px}
+.gpsTx ol{margin:0;padding:0;list-style:none;counter-reset:g;display:grid;gap:8px}
+.gpsTx li{counter-increment:g;color:var(--mut);font-size:14px;display:flex;gap:10px}
+.gpsTx li::before{content:counter(g);font:800 12px var(--mono);color:var(--g);width:20px;height:20px;border-radius:50%;border:1px solid rgba(70,184,127,.5);display:grid;place-items:center;flex:none}
+.rushCta p{margin:0 0 6px;font-size:16px;font-weight:700}
+@media (max-width:520px){.rushGps{grid-template-columns:1fr;justify-items:center;text-align:center}.gpsTx li{justify-content:center}}
+@media (prefers-reduced-motion:reduce){.radar .sweep,.radar .d{animation:none}.radar .d{opacity:1}}
 @media (max-width:900px){.rushG{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.rushLive i{animation:none}}
 </style>
