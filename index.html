@@ -197,7 +197,7 @@ main{position:relative;z-index:15;background:var(--ink)}
     <li><a href="#start">문의</a></li>
   </ul>
   <a class="login" href="https://skifighting-afk.github.io/plus-ev/">로그인</a>
-  <a class="btn go" href="https://skifighting-afk.github.io/plus-ev/" data-evt="signup_start" data-src="nav">+EV 시작하기</a>
+  <a class="btn go" href="https://skifighting-afk.github.io/plus-ev/" data-evt="signup_start" data-src="nav">+EV 바로 시작하기</a>
 </header>
 
 <section class="vhero" id="top" aria-labelledby="heroT">
@@ -1461,7 +1461,7 @@ main{position:relative;z-index:15;background:var(--ink)}
 <span>© 2026 +EV. All rights reserved.</span>
 </footer>
 
-<div class="mbar" id="mbar"><a class="btn go" href="https://skifighting-afk.github.io/plus-ev/" data-evt="signup_start" data-src="mbar">+EV 시작하기</a><a class="btn line" href="#eco">기능 보기</a></div>
+<div class="mbar" id="mbar"><a class="btn go" href="https://skifighting-afk.github.io/plus-ev/" data-evt="signup_start" data-src="mbar">+EV 바로 시작하기</a><a class="btn line" href="#eco">기능 보기</a></div>
 
 
 
@@ -1616,5 +1616,118 @@ setInterval(function(){if(!on||reduce)return;selT+=.1;if(auto&&selT>4.6)pick((se
 })();
 </script>
 
+<!-- 플로팅 시작 버튼 + 300명 축하 팝업 -->
+<a class="fab" id="fab" href="https://skifighting-afk.github.io/plus-ev/" data-evt="signup_start" data-src="fab"><span class="fabDot"></span><span class="fabTx"><b>+EV 바로 시작하기</b><small>첫 달 무료</small></span><span class="fabArr" aria-hidden="true">→</span></a>
+<div class="cel" id="cel" role="dialog" aria-modal="true" aria-labelledby="celT" hidden>
+  <div class="celBg" data-close></div>
+  <div class="celBox">
+    <div class="celRain" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <button class="celX" type="button" data-close aria-label="닫기">×</button>
+    <div class="celChip" aria-hidden="true"><span>+EV</span></div>
+    <p class="celK">감사합니다</p>
+    <h2 id="celT"><span>딜러 가입</span><b><em id="celN">0</em>명+</b><span>돌파</span></h2>
+    <p class="celP">오픈 직후, 300명이 넘는 딜러가 +EV에 모였습니다.<br>이제 공석이 생겨도, 가까운 딜러가 먼저 응답합니다.</p>
+    <a class="btn go celGo" href="https://skifighting-afk.github.io/plus-ev/" data-evt="signup_start" data-src="popup">+EV 바로 시작하기</a>
+    <button class="celLater" type="button" data-close>둘러보고 할게요</button>
+  </div>
+</div>
+<style>
+.fab{position:fixed;right:28px;bottom:28px;z-index:60;display:flex;align-items:center;gap:12px;padding:12px 18px 12px 14px;border-radius:999px;background:var(--g);color:#06140c;text-decoration:none;box-shadow:0 14px 40px rgba(70,184,127,.35),0 2px 0 rgba(255,255,255,.25) inset;transform:translateY(120%);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .3s,box-shadow .2s}
+.fab.on{transform:none;opacity:1}
+.fab:hover{box-shadow:0 18px 50px rgba(70,184,127,.5),0 2px 0 rgba(255,255,255,.25) inset}
+.fab:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.fabDot{width:10px;height:10px;border-radius:50%;background:#06140c;box-shadow:0 0 0 0 rgba(6,20,12,.5);animation:fabP 1.8s infinite}
+@keyframes fabP{70%{box-shadow:0 0 0 9px rgba(6,20,12,0)}100%{box-shadow:0 0 0 0 rgba(6,20,12,0)}}
+.fabTx{display:flex;flex-direction:column;line-height:1.15}
+.fabTx b{font:900 16px var(--ko);letter-spacing:-.01em}
+.fabTx small{font-size:12px;font-weight:700;opacity:.75}
+.fabArr{width:30px;height:30px;border-radius:50%;background:#06140c;color:var(--g);display:grid;place-items:center;font-weight:900;transition:transform .2s}
+.fab:hover .fabArr{transform:translateX(3px)}
+@media (max-width:760px){.fab{display:none}}
+.cel{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px}
+.cel[hidden]{display:none}
+.celBg{position:absolute;inset:0;background:rgba(5,7,6,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);animation:celF .3s ease}
+.celBox{position:relative;width:min(440px,100%);overflow:hidden;text-align:center;padding:44px 32px 28px;border-radius:26px;border:1px solid rgba(70,184,127,.5);background:radial-gradient(ellipse at 50% 0%,rgba(70,184,127,.28),transparent 60%),#0d1210;box-shadow:0 40px 120px rgba(0,0,0,.6);animation:celU .5s cubic-bezier(.2,.9,.25,1.15)}
+@keyframes celF{from{opacity:0}}
+@keyframes celU{from{opacity:0;transform:translateY(24px) scale(.94)}}
+.celX{position:absolute;right:14px;top:12px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.06);color:#c9d1cb;font-size:22px;cursor:pointer;z-index:2}
+.celX:hover{background:rgba(255,255,255,.12)}
+.celChip{position:relative;width:96px;height:96px;margin:0 auto 18px;border-radius:50%;background:repeating-conic-gradient(var(--g) 0 22.5deg,#0d1210 22.5deg 45deg);display:grid;place-items:center;box-shadow:0 0 0 4px #0d1210,0 0 0 6px rgba(70,184,127,.6),0 12px 40px rgba(70,184,127,.4);animation:celSpin 1.1s cubic-bezier(.2,.8,.2,1)}
+.celChip span{width:66px;height:66px;border-radius:50%;background:#0d1210;border:2px dashed rgba(70,184,127,.6);display:grid;place-items:center;font:900 italic 20px var(--lat);color:#fff}
+@keyframes celSpin{from{transform:rotateY(540deg) scale(.6)}}
+.celK{margin:0;color:var(--g);font-weight:800;font-size:14px}
+.celBox h2{margin:6px 0 12px;display:flex;flex-direction:column;align-items:center;line-height:1.05;font-weight:900;letter-spacing:-.03em}
+.celBox h2 span{font-size:22px;color:#EEF1EC}
+.celBox h2 b{font:900 clamp(64px,16vw,88px) var(--lat);color:var(--g);letter-spacing:-.05em}
+.celBox h2 b em{font-style:normal}
+.celP{margin:0 0 22px;color:var(--mut);font-size:15px;line-height:1.65}
+.celGo{display:flex;justify-content:center;width:100%;height:52px;font-size:17px}
+.celLater{margin-top:10px;border:0;background:none;color:var(--mut);font:inherit;font-size:14px;cursor:pointer;padding:8px}
+.celLater:hover{color:#EEF1EC}
+.celRain{position:absolute;inset:0;pointer-events:none}
+.celRain i{position:absolute;top:-24px;width:14px;height:14px;border-radius:50%;border:3px solid var(--g);background:#0d1210;opacity:0;animation:celDrop 2.6s ease-in forwards}
+.celRain i:nth-child(3n){border-color:#EEF1EC}.celRain i:nth-child(4n){border-color:#c9a45c}
+.celRain i:nth-child(1){left:6%;animation-delay:.1s}.celRain i:nth-child(2){left:16%;animation-delay:.5s}.celRain i:nth-child(3){left:26%;animation-delay:.25s}.celRain i:nth-child(4){left:36%;animation-delay:.7s}.celRain i:nth-child(5){left:46%;animation-delay:.05s}.celRain i:nth-child(6){left:56%;animation-delay:.6s}.celRain i:nth-child(7){left:66%;animation-delay:.3s}.celRain i:nth-child(8){left:76%;animation-delay:.8s}.celRain i:nth-child(9){left:86%;animation-delay:.15s}.celRain i:nth-child(10){left:94%;animation-delay:.45s}.celRain i:nth-child(11){left:22%;animation-delay:1s}.celRain i:nth-child(12){left:72%;animation-delay:1.1s}
+@keyframes celDrop{0%{opacity:0;transform:translateY(0) rotate(0)}10%{opacity:.9}100%{opacity:0;transform:translateY(560px) rotate(260deg)}}
+@media (prefers-reduced-motion:reduce){.fabDot,.celChip,.celBox,.celBg{animation:none}.celRain{display:none}}
+</style>
+<script>
+(function(){
+  var fab=document.getElementById('fab');
+  function upd(){fab.classList.toggle('on',scrollY>innerHeight*.6)}addEventListener('scroll',upd,{passive:true});upd();
+  var c=document.getElementById('cel'),n=document.getElementById('celN'),last;
+  try{if(sessionStorage.getItem('ev-cel300'))return}catch(e){}
+  function close(){c.hidden=true;try{sessionStorage.setItem('ev-cel300','1')}catch(e){}if(last&&last.focus)last.focus();removeEventListener('keydown',key)}
+  function key(e){if(e.key==='Escape')close()}
+  [].forEach.call(c.querySelectorAll('[data-close]'),function(b){b.addEventListener('click',close)});
+  setTimeout(function(){last=document.activeElement;c.hidden=false;addEventListener('keydown',key);c.querySelector('.celGo').focus({preventScroll:true});
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){n.textContent='300';return}
+    var t0=performance.now();(function f(t){var k=Math.min(1,(t-t0)/1300),e=1-Math.pow(1-k,3);n.textContent=Math.round(300*e);if(k<1)requestAnimationFrame(f)})(t0)},1400);
+})();
+</script>
+<div class="cel" id="cel2" role="dialog" aria-modal="true" aria-labelledby="cel2T" hidden>
+  <div class="celBg" data-close></div>
+  <div class="celBox">
+    <button class="celX" type="button" data-close aria-label="닫기">×</button>
+    <div class="cmp" aria-hidden="true">
+      <div class="cmpG"><span>매출</span><div class="cmpB"><i class="a" style="--h:52%"></i><i class="b up" style="--h:86%"></i></div></div>
+      <div class="cmpG"><span>비용</span><div class="cmpB"><i class="a" style="--h:80%"></i><i class="b dn" style="--h:46%"></i></div></div>
+      <div class="cmpL"><span><s></s>지금</span><span><s class="g"></s>+EV 이후</span></div>
+    </div>
+    <h2 id="cel2T" class="cel2H">아직도 +EV 안 쓰는<br>사장님이 있다구요?</h2>
+    <p class="celP">+EV로 달라지는 월 매출과 비용,<br>지금 바로 확인해 보세요.</p>
+    <a class="btn go celGo" href="https://skifighting-afk.github.io/plus-ev/" data-evt="signup_start" data-src="popup2">+EV 무료로 사용하러 가기</a>
+    <button class="celLater" type="button" data-close>다음에 할게요</button>
+  </div>
+</div>
+<style>
+.celP{word-break:keep-all}
+.cel2H{margin:4px 0 12px;font-size:clamp(26px,6vw,32px);line-height:1.25;font-weight:900;letter-spacing:-.03em;color:#EEF1EC;word-break:keep-all}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:4px auto 22px;max-width:300px}
+.cmpG span{display:block;font-size:13px;font-weight:800;color:var(--mut);margin-bottom:8px}
+.cmpB{height:110px;display:flex;align-items:flex-end;justify-content:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.14)}
+.cmpB i{width:30px;height:var(--h);border-radius:8px 8px 0 0;transform-origin:bottom;animation:cmpUp .9s cubic-bezier(.2,.8,.2,1) both}
+.cmpB i.a{background:rgba(255,255,255,.18)}
+.cmpB i.up{background:var(--g);animation-delay:.35s}
+.cmpB i.dn{background:linear-gradient(var(--g),rgba(70,184,127,.5));animation-delay:.35s}
+@keyframes cmpUp{from{transform:scaleY(0)}}
+.cmpL{grid-column:1/-1;display:flex;justify-content:center;gap:16px;font-size:12px;color:var(--mut)}
+.cmpL span{display:flex;align-items:center;gap:6px}.cmpL s{width:10px;height:10px;border-radius:3px;background:rgba(255,255,255,.18)}.cmpL s.g{background:var(--g)}
+@media (prefers-reduced-motion:reduce){.cmpB i{animation:none}}
+</style>
+<script>
+(function(){
+  var c=document.getElementById('cel2'),last,shown=false;
+  try{if(sessionStorage.getItem('ev-cel2'))return}catch(e){}
+  function close(){c.hidden=true;if(last&&last.focus)last.focus();removeEventListener('keydown',key)}
+  function key(e){if(e.key==='Escape')close()}
+  [].forEach.call(c.querySelectorAll('[data-close]'),function(b){b.addEventListener('click',close)});
+  function chk(){if(shown)return;var p=(scrollY+innerHeight)/document.documentElement.scrollHeight,first=document.getElementById('cel');
+    if(p<.55||(first&&!first.hidden))return;
+    shown=true;removeEventListener('scroll',chk);try{sessionStorage.setItem('ev-cel2','1')}catch(e){}
+    last=document.activeElement;c.hidden=false;addEventListener('keydown',key);c.querySelector('.celGo').focus({preventScroll:true})}
+  addEventListener('scroll',chk,{passive:true});
+})();
+</script>
 </body>
 </html>
